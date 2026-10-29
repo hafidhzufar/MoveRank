@@ -51,3 +51,7 @@ FR-15	Validasi identitas room dan data pertandingan
 FR-17	Menjaga privasi data yang dikirim
 
 Output: Kedua iPhone dapat bertukar statistik aktivitas melalui MQTT meskipun berada di kota berbeda.
+
+Implementasi anggota 3 tersedia di [`MQTT/`](MQTT/README.md): MQTT.js melalui WSS HiveMQ Cloud, sinkronisasi statistik, host sebagai otoritas pertandingan, reconnect, validasi room/ronde/identitas, serta enkripsi dan tanda tangan pesan. Sudah terintegrasi dengan UI dan sensor melalui panel **Main online dengan MQTT Cloud** di [`User Interface/index.html`](User%20Interface/index.html). Isi konfigurasi broker pada kedua perangkat sebelum masuk room; host membagikan kode serta kunci undangan kepada lawan. Tanpa konfigurasi, UI tetap demo lokal.
+
+Jalankan `npm ci`, `npm run check`, dan `npm test` dari root untuk pemeriksaan otomatis. Panduan HiveMQ, kebijakan skor saat koneksi putus, tes browser, serta checklist uji dua iPhone ada di [`MQTT/README.md`](MQTT/README.md). Kredensial broker dan hosting HTTPS perlu disediakan saat pengujian perangkat nyata.

@@ -4,13 +4,17 @@ Antarmuka HTML, CSS, dan JavaScript tanpa framework untuk tugas anggota 1. Tema 
 
 ## Menjalankan
 
-Buka `index.html` langsung di browser atau jalankan dari folder ini:
+Untuk demo lokal, buka `index.html` langsung di browser. Untuk mode online, sajikan root repo agar folder Sensor dan MQTT juga tersedia. Dari root repo jalankan:
 
 ```sh
 python -m http.server 8765
 ```
 
-Buka `http://localhost:8765`. `index.htlm` adalah pengarah untuk nama file lama yang salah ekstensi. Untuk menguji pada iPhone, sajikan folder melalui server yang dapat diakses iPhone. Integrasi DeviceMotion oleh anggota 2 membutuhkan HTTPS dan izin sensor dari interaksi pengguna. Pengujian langsung Safari iPhone masih diperlukan.
+Buka `http://localhost:8765/User%20Interface/index.html`. Untuk menguji pada iPhone, sajikan folder melalui server yang dapat diakses iPhone. Integrasi DeviceMotion oleh anggota 2 membutuhkan HTTPS dan izin sensor dari interaksi pengguna. Pengujian langsung Safari iPhone masih diperlukan.
+
+## Mode online anggota 3
+
+Integrasi MQTT dan sensor tersedia melalui panel **Main online dengan MQTT Cloud**. Isi URL WSS dan kredensial pada kedua perangkat sebelum membuat/gabung room. Host membagikan kode dan kunci undangan; pemain meminta izin sensor melalui Saya siap. Leaderboard, hasil resmi, reconnect, serta reset dikelola adapter anggota 3. Panduan lengkap dan batasan uji ada di [`../MQTT/README.md`](../MQTT/README.md). Default halaman tetap demo lokal sampai konfigurasi online dipilih. Muat ulang untuk mengganti broker atau keluar dari room.
 
 ## Alur yang tersedia
 

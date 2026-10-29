@@ -28,15 +28,16 @@ function render() {
   $('self-status').textContent = self ? (running ? self.activity : finished ? 'Selesai' : self.ready ? 'Siap bertanding' : 'Belum siap') : 'Belum masuk room';
   $('self-ready').textContent = self?.ready ? '✓' : '—';
   $('opponent-name').textContent = opponent?.name ?? 'Menunggu lawan';
-  $('opponent-status').textContent = opponent ? (running ? opponent.activity : finished ? 'Selesai' : opponent.ready ? 'Siap bertanding' : 'Belum siap') : 'Ajak temanmu bergabung';
+  $('opponent-status').textContent = opponent ? (opponent.connected === false ? 'Koneksi lawan terputus' : running ? opponent.activity : finished ? 'Selesai' : opponent.ready ? 'Siap bertanding' : 'Belum siap') : 'Ajak temanmu bergabung';
   $('opponent-avatar').textContent = opponent ? opponent.name.charAt(0).toUpperCase() : '?';
   $('opponent-ready').textContent = opponent?.ready ? '✓' : '—';
   $('ready-button').disabled = busy || !room || room.status !== 'waiting';
   $('ready-button').textContent = self?.ready ? '✓ Siap · Batalkan' : 'Saya siap';
-  $('start-button').disabled = busy || !room || room.status !== 'waiting' || !isHost || room.players.length !== 2 || !room.players.every(p => p.ready);
+  $('start-button').disabled = busy || !room || room.status !== 'waiting' || !isHost || room.players.length !== 2 || !room.players.every(p => p.ready && p.connected !== false);
   $('start-button').innerHTML = isHost || !room ? 'Mulai pertandingan <span>↗</span>' : 'Menunggu host';
   $('reset-button').disabled = busy || !room || !isHost;
   document.querySelectorAll('[data-open]').forEach(button => { button.disabled = busy || running || !!room; });
+  if ($('cloud-connect') && room?.demo) $('cloud-connect').disabled = true;
   $('step-total').textContent = number.format(self?.steps ?? 0);
   $('activity-label').textContent = self?.activity ?? 'Belum ada aktivitas';
   const elapsed = room ? room.duration - remaining : 0;
@@ -48,6 +49,10 @@ function render() {
   if (finished) {
     const ranked = [...room.players].sort((a,b) => b.steps - a.steps);
     message = ranked.length > 1 && ranked[0].steps === ranked[1].steps ? 'Hasil seri! Kalian sama-sama hebat.' : `${ranked[0]?.name ?? 'Pemain'} memimpin dengan ${number.format(ranked[0]?.steps ?? 0)} langkah!`;
+  }
+  if (finished && Array.isArray(room.winnerIds)) {
+    const winners = room.players.filter(p => room.winnerIds.includes(p.id));
+    message = winners.length > 1 ? 'Hasil resmi: seri!' : `Pemenang: ${winners[0]?.name ?? 'Belum tersedia'} dengan ${number.format(winners[0]?.steps ?? 0)} langkah valid.`;
   }
   $('match-message').textContent = message;
   $('player-count').textContent = `${room?.players.length ?? 0} pemain di arena`;
@@ -70,6 +75,8 @@ function openRoom(mode) {
   $('duration-field').hidden = mode !== 'create';
   $('code-field').hidden = mode !== 'join';
   $('join-code').required = mode === 'join';
+  const invitation = $('join-invitation');
+  if (invitation) invitation.required = !!adapter && mode === 'join';
   $('room-dialog').showModal();
   $('player-name').focus();
 }

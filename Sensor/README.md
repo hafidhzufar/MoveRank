@@ -116,3 +116,7 @@ Uji manual Safari iPhone yang masih perlu dijalankan pada perangkat nyata:
 | Layar ponsel dan desktop | Tombol/statistik terbaca, tidak ada overflow horizontal |
 
 Catat model iPhone, versi iOS, cara membawa perangkat, frekuensi event, dan kesalahan hitung sebelum mengubah ambang. Jangan menyatakan persentase akurasi tanpa hasil pengukuran fisik.
+
+## Integrasi online anggota 3
+
+Halaman [`../User Interface/index.html`](../User%20Interface/index.html) sekarang menyediakan panel MQTT Cloud untuk menghubungkan modul sensor ini dengan pertandingan dua perangkat. Tanpa konfigurasi, default UI tetap demo lokal. Adapter anggota 3 meminta izin dari tombol siap, memulai/reset sensor satu kali per ronde, mengirim statistik agregat, dan menghentikan sensor saat selesai/reset/keluar. Panduan broker, reconnect, kebijakan hasil, dan uji perangkat nyata ada di [`../MQTT/README.md`](../MQTT/README.md).
