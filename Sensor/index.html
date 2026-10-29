@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101010">
+  <title>MoveRank | Uji Sensor</title>
+  <link rel="stylesheet" href="demo.css">
+  <script src="processor.js" defer></script>
+  <script src="motion.js" defer></script>
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a href="../User%20Interface/index.html">MoveRank<span> / SENSOR LAB</span></a><span class="label">ANGGOTA 02</span></header>
+    <section aria-labelledby="title">
+      <p class="eyebrow">FR-03 &ndash; FR-08 / DEVICE MOTION</p>
+      <h1>Gerakan nyata.<br><span>Langkah terukur.</span></h1>
+      <p class="intro">Uji sensor iPhone secara mandiri sebelum integrasi pertandingan. Tidak ada simulasi langkah dan tidak ada data yang dikirim ke server.</p>
+      <div class="status" role="status"><strong id="sensor-state">Belum aktif</strong><p id="sensor-message">Tekan mulai untuk meminta izin sensor. Gunakan HTTPS dan biarkan halaman tetap terbuka.</p></div>
+      <div class="stats">
+        <div><span>LANGKAH VALID</span><strong id="steps">0</strong></div>
+        <div><span>AKTIVITAS</span><strong id="activity" class="activity">Diam</strong></div>
+        <div><span>LANGKAH / MENIT</span><strong id="cadence">0</strong></div>
+      </div>
+      <div class="actions"><button id="start" type="button">Izinkan &amp; Mulai</button><button id="stop" type="button" class="secondary" disabled>Hentikan</button><button id="reset" type="button" class="secondary">Reset langkah</button></div>
+    </section>
+    <section class="notes" aria-labelledby="checklist">
+      <h2 id="checklist">Cek sebelum bertanding.</h2>
+      <ol>
+        <li>Izinkan Motion &amp; Orientation melalui tombol. Jika ditolak, periksa izin situs di Safari dan coba lagi.</li>
+        <li>Diam selama 10 detik, lalu berjalan 30 langkah sambil menghitung manual. Coba lagi dengan berjalan cepat.</li>
+        <li>Berhenti setidaknya 2 detik. Aktivitas harus kembali ke Diam.</li>
+        <li>Coba ganti tab atau kunci layar. Sensor dijeda; lanjutkan dengan tombol mulai. Reset mengosongkan hitungan, bukan mencabut izin.</li>
+      </ol>
+      <p>Angka merupakan estimasi berbasis ambang awal, bukan pengukuran medis atau jaminan anti-kecurangan. Cara membawa ponsel memengaruhi hasil. Jika sensor kosong selama 2 detik, pengambilan data dihentikan dan alasannya ditampilkan.</p>
+    </section>
+    <noscript>Aktifkan JavaScript untuk menguji sensor.</noscript>
+    <footer>MoveRank / Sensor &amp; Data Processing <a href="../User%20Interface/index.html">Kembali ke arena</a></footer>
+  </main>
+</body>
+</html>

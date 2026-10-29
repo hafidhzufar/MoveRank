@@ -33,6 +33,8 @@ FR-08	Klasifikasi aktivitas (diam, berjalan, berjalan cepat)
 
 Output: Modul JavaScript yang menghasilkan jumlah langkah dan kategori aktivitas dari sensor iPhone.
 
+Implementasi anggota 2 tersedia di [`Sensor/`](Sensor/README.md): modul DeviceMotion, Moving Average, Peak Detection, validasi gyroscope, klasifikasi aktivitas, pengujian, dan halaman uji iPhone [`Sensor/index.html`](Sensor/index.html). Petunjuk HTTPS, API integrasi anggota 3, serta batasan kalibrasi ada pada dokumentasi modul.
+
 
 Anggota 3 — MQTT Cloud & Logika Pertandingan
 

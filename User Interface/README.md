@@ -55,6 +55,8 @@ Status: `waiting`, `running`, atau `finished`. Room berisi 1–2 pemain dengan I
 
 Anggota 2 mengirim hasil sensor ke modul anggota 3; anggota 3 meneruskan snapshot terbaru ke UI, termasuk pembaruan `remaining` setiap detik saat pertandingan. UI online tidak menjalankan timer atau menambahkan skor sendiri. Otorisasi host, validasi gerakan, identitas room, reconnect, sinkronisasi tenggat, dan keputusan pemenang resmi tetap tanggung jawab modul sensor/MQTT. UI menampilkan urutan skor yang diterima. Jangan meletakkan kredensial rahasia broker di frontend.
 
+Modul anggota 2 dan kontrak callback tersedia di [`../Sensor/README.md`](../Sensor/README.md). Buka `/Sensor/` dari root hosting HTTPS untuk menguji sensor secara terpisah. Demo UI di folder ini tetap menggunakan data simulasi sampai adapter anggota 3 diintegrasikan; memuat modul sensor saja tidak mengganti skor demo.
+
 ## Pemeriksaan
 
 ```sh
